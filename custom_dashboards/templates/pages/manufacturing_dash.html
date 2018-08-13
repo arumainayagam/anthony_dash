@@ -35,7 +35,7 @@
                                         </div>
                                         <div class="stat_text">
                                             <strong>Open</strong>Sales Order
-                                            <span class="percent down"> <i class="icon-caret-down"></i> 16</span>
+                                            <span class="percent down"> <i class="icon-caret-down"></i> {{osalesorder}} </span>
                                         </div>
                                     </li>
                                     <li>
@@ -44,7 +44,8 @@
                                         </div>
                                         <div class="stat_text">
                                             <strong>Open</strong>Production Orders
-                                            <span class="percent up"> <i class="icon-caret-up"></i>23</span>
+                                            <span class="percent up"> <i class="icon-caret-up"></i>
+                                            {{oporder}} </span>
                                         </div>
                                     </li>
                                     <li>
@@ -53,7 +54,7 @@
                                         </div>
                                         <div class="stat_text">
                                             <strong>In Progress</strong>Production Orders
-                                            <span class="percent"> 0</span>
+                                            <span class="percent"> {{inpropo}}</span>
                                         </div>
                                     </li>
                                     <li>
@@ -62,7 +63,7 @@
                                         </div>
                                         <div class="stat_text">
                                             <strong>Closed</strong>Production Orders
-                                            <span class="percent down">70</span>
+                                            <span class="percent down">{{clopropo}}</span>
                                         </div>
                                     </li>
                                 </ul>
@@ -72,37 +73,27 @@
                                 <a class="quick-btn">
                                     <i class="fa fa-cubes"></i>
                                     <span class="namer">Sales Order</span>
-                                    <span class="label label-important">2</span>
+                                    <span class="label label-important">{{salesorder}}</span>
                                 </a>
                                 <a class="quick-btn">
                                     <i class="fa fa-cubes"></i>
                                     <span class="namer">Sales Invoice</span>
-                                    <span class="label label-success">-456</span>
+                                    <span class="label label-success">-{{salesinvo}}</span>
                                 </a>
                                 <a class="quick-btn">
                                     <i class="fa fa-cubes"></i>
                                     <span class="namer">Production Order</span>
-                                    <span class="label label-success">-456</span>
-                                </a>
-                                <a class="quick-btn">
-                                    <i class="fa fa-cubes"></i>
-                                    <span class="namer">BOM</span>
-                                    <span class="label label-warning">+25</span>
+                                    <span class="label label-success">-{{productionorder}}</span>
                                 </a>
                                 <a class="quick-btn">
                                     <i class="fa fa-cubes"></i>
                                     <span class="namer">Material Request</span>
-                                    <span class="label btn-metis-2">3.14159265</span>
+                                    <span class="label btn-metis-2">{{materialreq}}</span>
                                 </a>
                                 <a class="quick-btn">
                                     <i class="fa fa-cubes"></i>
                                     <span class="namer">Purchase Order</span>
-                                    <span class="label btn-metis-4">2.71828</span>
-                                </a>
-                                <a class="quick-btn">
-                                    <i class="fa fa-cubes"></i>
-                                    <span class="namer">Material Issue</span>
-                                    <span class="label btn-metis-3">1.618</span>
+                                    <span class="label btn-metis-4">{{purchaseorder}}</span>
                                 </a>
                             </div>
 
