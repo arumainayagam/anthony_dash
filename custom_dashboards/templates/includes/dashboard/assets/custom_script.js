@@ -11,6 +11,7 @@ function getRandomColor() {
   }
   return color;
 }
+         
 
 frappe.call({
     method: "custom_dashboards.templates.pages.manufacturing_dash.get_chart_data",
