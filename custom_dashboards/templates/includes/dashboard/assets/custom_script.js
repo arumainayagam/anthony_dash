@@ -95,6 +95,8 @@ $('.span8 #calendar_content #calendar').fullCalendar({
 });
 
 $(".quick-btn").click(function () {
+    $("#trigo2").html('');
+    $("#trigo2").html('<canvas id="myChart" style="width: 100%; height: 100%;"> </canvas>');
 
         var b = $(this).find(".namer").text();
 
