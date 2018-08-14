@@ -21,7 +21,21 @@ app_license = "MIT"
 # include js, css files in header of web template
 # web_include_css = "/assets/custom_dashboards/css/custom_dashboards.css"
 web_include_js = [
-	"assets/js/libs.min.js"
+	"assets/js/libs.min.js",
+	"assets/js/desk.min.js",
+	"assets/js/list.min.js",
+	"assets/js/form.min.js",
+	"assets/js/control.min.js",
+	"assets/js/report.min.js",
+	"assets/frappe/js/frappe/toolbar.js"
+]
+
+web_include_css = [
+	"assets/css/desk.min.css",
+	"assets/css/list.min.css",
+	"assets/css/form.min.css",
+	"assets/css/report.min.css",
+	"assets/css/module.min.css"
 ]
 
 # include js in page
