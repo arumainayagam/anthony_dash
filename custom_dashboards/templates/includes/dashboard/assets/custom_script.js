@@ -106,7 +106,7 @@ const data = {
     ]
 }
  
-const chart = new Chart("#trigo", { // or a DOM element
+const chart = new frappe.Chart("#trigo", { // or a DOM element
     // title: "My Awesome Chart",
     data: data,
     type: 'axis-mixed', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
@@ -129,7 +129,7 @@ const data1 = {
     ]
 }
  
-const chart1 = new Chart("#trigo1", { // or a DOM element
+const chart1 = new frappe.Chart("#trigo1", { // or a DOM element
     // title: "My Awesome Chart",
     data: data1,
     type: 'pie', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
@@ -165,8 +165,38 @@ $(".quick-btn").click(function () {
                 }
             ]
         }
+
+        if (b = "Sales Order") {
+            frappe.call({
+                method: "frappe.client.get_list",
+                args: {
+                    doctype: "Production Order",
+                    order_by: "name",
+                    fields: ["name"],
+                    filters: [{"status": "In Process"}] 
+
+                },
+                async: false,
+                callback: function (r) {
+                    // body...
+                    production_order_inprogress = r.message;
+                }
+            });
+        }
+        if (b = "Sales Invoice") {
+            
+        }
+        if (b = "Production Order") {
+            
+        }
+        if (b = "Material Request") {
+            
+        }
+        if (b = "Purchase Order") {
+            
+        }
          
-        const chart2 = new Chart("#trigo2", { // or a DOM element
+        const chart2 = new frappe.Chart("#trigo2", { // or a DOM element
             // title: "My Awesome Chart",
             data: data2,
             type: 'pie', // or 'bar', 'line', 'scatter', 'pie', 'percentage'

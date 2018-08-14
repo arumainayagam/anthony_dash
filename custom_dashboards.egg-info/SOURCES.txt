@@ -606,8 +606,10 @@ custom_dashboards/templates/pages/._custom_base.html
 custom_dashboards/templates/pages/._custom_navbar.html
 custom_dashboards/templates/pages/._custom_web.html
 custom_dashboards/templates/pages/._manufacturing_dash.html
+custom_dashboards/templates/pages/._manufacturing_dash.py
 custom_dashboards/templates/pages/__init__.py
 custom_dashboards/templates/pages/custom_base.html
 custom_dashboards/templates/pages/custom_navbar.html
 custom_dashboards/templates/pages/custom_web.html
 custom_dashboards/templates/pages/manufacturing_dash.html
+custom_dashboards/templates/pages/manufacturing_dash.py
