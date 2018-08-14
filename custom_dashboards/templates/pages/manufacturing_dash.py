@@ -13,11 +13,17 @@ from frappe import _
 
 def get_context(context):
 
+	tas = frappe.db.get_list("Task", 
+		fields= ["subject"],
+		filters={"status": "Open"})
+
+	context.tas = tas
+
 	pro = frappe.db.get_list("Project", 
 		fields= ["percent_complete", "project_name"])
 
 	context.pro = pro
-	
+
 	osalesorder = frappe.db.get_list("Sales Order", 
 		fields= ["name"],
 		filters={"status": "To Deliver and Bill"})
