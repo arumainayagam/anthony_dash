@@ -12,7 +12,7 @@ from frappe import _
 
 
 def get_context(context):
-	project = frappe.db.get_list("Project", 
+	pro = frappe.db.get_list("Project", 
 		fields= ["percent_complete", "project_name"])
 
 	osalesorder = frappe.db.get_list("Sales Order", 
