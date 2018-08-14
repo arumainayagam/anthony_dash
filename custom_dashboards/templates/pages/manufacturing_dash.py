@@ -97,7 +97,6 @@ def get_context(context):
 
 	return context
 
-
 @frappe.whitelist()
 def get_chart_data(doctype):
 	status = frappe.db.get_list("DocField",fields= ["options"],filters={"parent": doctype, "fieldname": "status"})[0].options
