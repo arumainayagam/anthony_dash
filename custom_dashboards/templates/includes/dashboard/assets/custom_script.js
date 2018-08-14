@@ -1,75 +1,71 @@
 
 $(document).ready(function(){
 
-//# sourceMappingURL=frappe-charts.min.iife.js.map
-    // var sales_order;
-    // var production_order_inprogress;
-    // var production_order_completed;
-    // var production_order_sumbited;
+$("#dynachart").html("Sales Order");
+var ok;
+var labs = [];
+var dats = [];
 
-    // frappe.call({
-    //     method: "frappe.client.get_list",
-    //     args: {
-    //         doctype: "Sales Order",
-    //         order_by: "name",
-    //         fields: ["name"],
-    //         filters: [{"status": "To Deliver and Bill"}] 
+frappe.call({
+    method: "custom_dashboards.templates.pages.manufacturing_dash.get_chart_data",
+    async: false,
+    args: {
+        doctype: "Sales Order",
+    },
+    callback: function (r) {
+        ok = r.message;
+        console.log(ok)
+        
+        for (var i = 0; i < ok.length; i++) {
+            labs.push(ok[i].status);
+            dats.push(ok[i].valu);
 
-    //     },
-    //     async: false,
-    //     callback: function (r) {
-    //         // body...
-    //         sales_order = r.message;
-    //     }
-    // });
-    
-    // frappe.call({
-    //     method: "frappe.client.get_list",
-    //     args: {
-    //         doctype: "Production Order",
-    //         order_by: "name",
-    //         fields: ["name"],
-    //         filters: [{"status": "In Process"}] 
+        }
 
-    //     },
-    //     async: false,
-    //     callback: function (r) {
-    //         // body...
-    //         production_order_inprogress = r.message;
-    //     }
-    // });
+    }
+});
+console.log(labs)
+console.log(dats)
 
-    // frappe.call({
-    //     method: "frappe.client.get_list",
-    //     args: {
-    //         doctype: "Production Order",
-    //         order_by: "name",
-    //         fields: ["name"],
-    //         filters: [{"status": "Completed"}] 
+var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
 
-    //     },
-    //     async: false,
-    //     callback: function (r) {
-    //         // body...
-    //         production_order_completed = r.message;
-    //     }
-    // });
-
-    // frappe.call({
-    //     method: "frappe.client.get_list",
-    //     args: {
-    //         doctype: "Production Order",
-    //         order_by: "name",
-    //         fields: ["name"],
-    //         filters: [{"status": "Submitted"}] 
-
-    //     },
-    //     async: false,
-    //     callback: function (r) {
-    //         // body...
-    //         production_order_sumbited = r.message;
-    //     }
-    // });
+        labels: labs,
+        datasets: [{
+            label: '# of Votes',
+            data: dats,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
 
 
 $('.span8 #calendar_content #calendar').fullCalendar({
@@ -92,122 +88,55 @@ $('.span8 #calendar_content #calendar').fullCalendar({
   eventColor: 'rgb(224, 241, 216)'
 });
 
-const data = {
-    labels: ["12am-3am", "3am-6pm", "6am-9am", "9am-12am",
-        "12pm-3pm", "3pm-6pm", "6pm-9pm", "9am-12am"
-    ],
-    datasets: [
-        {
-            name: "Dataset 1",
-            values: [25, 40, 30, 35, 8, 52, 17, -4]
-        },
-        {
-            name: "Dataset 2",
-            values: [25, 50, -10, 15, 18, 32, 27, 14]
-        }
-    ]
-}
- 
-const chart = new frappe.Chart("#trigo", { // or a DOM element
-    // title: "My Awesome Chart",
-    data: data,
-    type: 'axis-mixed', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
-    height: 250,
-    colors: ['#7cd6fd', '#743ee2']
-})
-
-const data1 = {
-    labels: ["12am-3am", "3am-6pm", "6am-9am", "9am-12am",
-        "12pm-3pm"],
-    datasets: [
-        {
-            title: "Some Data", type: "bar",
-            values: [25, 40, 30, 35, 8]
-        },
-        {
-            title: "Another Set", type: "line",
-            values: [25, 50, -10, 15, 18]
-        }
-    ]
-}
- 
-const chart1 = new frappe.Chart("#trigo1", { // or a DOM element
-    // title: "My Awesome Chart",
-    data: data1,
-    type: 'pie', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
-    height: 250,
-    colors: ['#7cd6fd', '#743ee2']
-})
 });
 
 $(".quick-btn").click(function () {
-    var a = $("#dyna").css("display");
-    
-    if (a == "block") {
-        $("#dyna").slideUp();
-        // $(this).removeClass("intro");
-    }
-    else if(a == "none"){
-        // $(this).addClass("intro");
-        $("#dyna").slideDown();
+
         var b = $(this).find(".namer").text();
 
         $("#dynachart").html(b);
-        const data2 = {
-            labels: ["12am-3am", "3am-6pm", "6am-9am", "9am-12am",
-                "12pm-3pm"],
-            datasets: [
-                {
-                    title: "Some Data", type: "bar",
-                    values: [25, 40, 30, 35, 8]
-                },
-                {
-                    title: "Another Set", type: "line",
-                    values: [25, 50, -10, 15, 18]
+
+
+var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
                 }
-            ]
+            }]
         }
-
-        if (b = "Sales Order") {
-            frappe.call({
-                method: "frappe.client.get_list",
-                args: {
-                    doctype: "Production Order",
-                    order_by: "name",
-                    fields: ["name"],
-                    filters: [{"status": "In Process"}] 
-
-                },
-                async: false,
-                callback: function (r) {
-                    // body...
-                    production_order_inprogress = r.message;
-                }
-            });
-        }
-        if (b = "Sales Invoice") {
-            
-        }
-        if (b = "Production Order") {
-            
-        }
-        if (b = "Material Request") {
-            
-        }
-        if (b = "Purchase Order") {
-            
-        }
-         
-
-        const chart2 = new frappe.Chart("#trigo2", { // or a DOM element
-            // title: "My Awesome Chart",
-            data: data2,
-            type: 'pie', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
-            height: 250,
-            colors: ['#7cd6fd', '#743ee2']
-        })
-
     }
+});
+
+
     
 });
 

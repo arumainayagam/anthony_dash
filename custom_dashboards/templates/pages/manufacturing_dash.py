@@ -7,6 +7,10 @@ import frappe.utils
 import json
 from frappe import _
 
+
+
+
+
 def get_context(context):
 	osalesorder = frappe.db.get_list("Sales Order", 
 		fields= ["name"],
@@ -92,3 +96,26 @@ def get_context(context):
 
 
 	return context
+
+
+@frappe.whitelist()
+def get_chart_data(doctype):
+	status = frappe.db.get_list("DocField",fields= ["options"],filters={"parent": doctype, "fieldname": "status"})[0].options
+	status = [s.strip() for s in status.splitlines()]
+	status.remove(status[0])
+	array = []
+	for x in status:
+		array.append({"status": x, "valu": len(frappe.db.get_list(doctype,fields= ["name"],filters={"status": x}))}) 
+
+
+	return array
+
+
+
+
+
+
+
+
+
+
