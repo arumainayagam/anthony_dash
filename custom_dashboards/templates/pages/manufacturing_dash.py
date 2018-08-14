@@ -12,6 +12,9 @@ from frappe import _
 
 
 def get_context(context):
+	project = frappe.db.get_list("Project", 
+		fields= ["percent_complete", "project_name"])
+
 	osalesorder = frappe.db.get_list("Sales Order", 
 		fields= ["name"],
 		filters={"status": "To Deliver and Bill"})

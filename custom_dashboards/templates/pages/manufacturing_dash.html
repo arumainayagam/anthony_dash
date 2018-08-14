@@ -204,38 +204,18 @@
                                         </header>
                                         <!-- .body -->
                                         <div class="body">
+
+                                            {% for i in project %}
                                             <div class="container">
-                                              <h5>Anthony</h5>
+                                              <h5>{{i.project_name}}</h5>
                                               <div class="progress">
-                                                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:90%">
-                                                  90%
+                                                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{i.percent_complete}}%">
+                                                  {{i.percent_complete}}%
                                                 </div>
                                               </div>
                                             </div>
-                                            <div class="container">
-                                              <h5>Vibrant</h5>
-                                              <div class="progress">
-                                                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
-                                                  40%
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div class="container">
-                                              <h5>Crisco</h5>
-                                              <div class="progress">
-                                                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:60%">
-                                                  60%
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div class="container">
-                                              <h5>project</h5>
-                                              <div class="progress">
-                                                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:55%">
-                                                  55%
-                                                </div>
-                                              </div>
-                                            </div>                                                                                                                                    
+                                            {% endfor %} 
+
                                         </div>
                                         <!-- /.body -->
                                     </div>
