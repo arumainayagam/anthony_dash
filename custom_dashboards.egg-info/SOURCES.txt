@@ -17,6 +17,7 @@ custom_dashboards/config/__init__.py
 custom_dashboards/config/desktop.py
 custom_dashboards/config/docs.py
 custom_dashboards/custom_dashboards/__init__.py
+custom_dashboards/custom_dashboards/custdashboard.py
 custom_dashboards/templates/__init__.py
 custom_dashboards/templates/includes/dashboard/assets/._base_style.css
 custom_dashboards/templates/includes/dashboard/assets/._custom_script.js

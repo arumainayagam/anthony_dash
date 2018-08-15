@@ -99,7 +99,7 @@
 
                             <hr>
                             <div class="row-fluid" id="dyna" >
-                                <div class="span9">
+                                <div class="span12">
                                     <div class="box">
                                         <header>
                                             <h5 id="dynachart">Chart</h5>
@@ -113,25 +113,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="span3">
-                                    <div class="box">
-                                        <header>
-                                            <div class="icons"><i class="icon-tags"></i></div>
-                                            <h5>Pending Tasks</h5>
-                                        </header>
-                                        <div class="block" style="max-height: 660px; overflow-y: scroll;">
-                                            <table class="table table-striped">
-                                                <tbody>
-                                                    {% for i in tas %}
-                                                    <tr>
-                                                        <td>{{i.subject}}</td>
-                                                    </tr>
-                                                    {% endfor %}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>          
                             </div>
                             <hr>
 
@@ -155,19 +136,38 @@
                             </div>
                             <hr> -->
                             <div class="row-fluid">
-                                <div class="span12">
+                                <div class="span8">
                                     <div class="box">
                                         <header>
-                                            <h5>Stock Levels</h5>
+                                            <h5>Calendar</h5>
                                         </header>
-                                        <div id="calendar_content" class="body">
-                                            <!-- <div id='calendar'></div> -->
-                                            <canvas id="stock" style="width: 100%; height: 100%;">
-                                            </canvas>
+                                         <div class="body" id="calendar_content" style="height: 350px; width: 100%;">
+                                         <canvas id="myChart2" style="width: 100%; height: 100%;">
+                                             
+                                         </canvas>
+
                                         </div>
                                     </div>
                                 </div>
-
+                                <div class="span4">
+                                    <div class="box">
+                                        <header>
+                                            <div class="icons"><i class="icon-tags"></i></div>
+                                            <h5>Pending Tasks</h5>
+                                        </header>
+                                        <div class="block" style="max-height: 660px; overflow-y: scroll;">
+                                            <table class="table table-striped">
+                                                <tbody>
+                                                    {% for i in tas %}
+                                                    <tr>
+                                                        <td>{{i.subject}}</td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <!--BEGIN LATEST COMMENT-->
                             <!-- .row-fluid -->

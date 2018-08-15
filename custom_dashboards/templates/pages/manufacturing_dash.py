@@ -122,6 +122,33 @@ def get_chart_data(doctype):
 	return array
 
 
+@frappe.whitelist()
+def get_stock_data():
+	war = frappe.db.get_list("Warehouse", fields= ["name"], filters={"disabled": 0})
+
+
+	items = frappe.db.get_list("Item", fields= ["item_code", "item_name"], filters={"show_g": 1})
+
+	for x in war:
+		for y in items:
+			y[x.name] = frappe.db.get_value("Bin",{"warehouse": x.name, "item_code": y.item_code},"actual_qty")
+
+	fun = []
+
+	for f in items:
+		dock = []
+		for r in war:
+			if f[r.name]:
+				dock.append(f[r.name])
+			else: 
+				dock.append(0)
+		fun.append({"label": f.item_name, "data": dock})	
+
+	return {"items": items,"war": war, "dock": dock, "fun": fun}
+
+
+
+
 
 
 
