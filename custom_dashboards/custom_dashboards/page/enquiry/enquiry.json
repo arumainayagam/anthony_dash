@@ -1,0 +1,22 @@
+{
+ "content": null, 
+ "creation": "2018-08-21 14:43:00.769187", 
+ "docstatus": 0, 
+ "doctype": "Page", 
+ "idx": 0, 
+ "modified": "2018-08-21 14:43:08.827069", 
+ "modified_by": "Administrator", 
+ "module": "Custom Dashboards", 
+ "name": "enquiry", 
+ "owner": "Administrator", 
+ "page_name": "Enquiry", 
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ], 
+ "script": null, 
+ "standard": "Yes", 
+ "style": null, 
+ "system_page": 0
+}

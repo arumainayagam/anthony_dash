@@ -1,0 +1,7 @@
+{
+	"js/flow.min.js": [
+		"public/js/raphael.min.js",
+		"public/js/flowchart-latest.js"
+	]
+
+}

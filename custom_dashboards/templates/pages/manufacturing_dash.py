@@ -12,9 +12,9 @@ from frappe import _
 
 
 def get_context(context):
-
+	
 	tas = frappe.db.get_list("Task", 
-		fields= ["subject"],
+		fields= ["subject", "exp_end_date"],
 		filters={"status": "Open"})
 
 	context.tas = tas
