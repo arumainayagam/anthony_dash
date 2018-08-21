@@ -72,6 +72,14 @@ def get_context(context):
 		context.salesorder = 0
 
 
+	delinote = frappe.db.get_list("Delivery Note", 
+		fields= ["name"])
+
+	if len(delinote) > 0:
+		context.delinote = len(delinote)
+	else: 
+		context.delinote = 0
+
 	salesinvo = frappe.db.get_list("Sales Invoice", 
 		fields= ["name"])
 
